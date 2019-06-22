@@ -1,0 +1,1 @@
+A macro for interning JavaScript primitives

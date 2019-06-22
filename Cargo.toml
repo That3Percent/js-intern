@@ -1,0 +1,15 @@
+[package]
+name = "js-intern"
+version = "0.1.0"
+authors = ["Zac Burns <that3percent@gmail.com>"]
+edition = "2018"
+description = "A macro for interning JavaScript primitives"
+homepage = "https://github.com/That3Percent/js-intern"
+repository = "https://github.com/That3Percent/js-intern"
+readme = "README.md"
+keywords = []
+categories = ["caching", "wasm", "web-programming"]
+license = "MIT"
+
+
+[dependencies]
