@@ -9,6 +9,10 @@
 //! * ```&'static str``` Eg: ```js_intern!("str")```
 //! * ```f64```, ```f32```, ```u8```, ```u16```, ```u32```, ```i8```, ```i16```, ```i32``` Eg: ```js_intern(1.0)```
 //! * ```bool``` Eg: ```js_intern(true)```
+//!
+//! # Related
+//! If you like this, you may like these other crates by Zac Burns
+//! * [soa-vec](https://github.com/That3Percent/soa-vec) A struct of arrays layout with a Vec of tuple API
 use std::collections::{HashMap};
 use wasm_bindgen::prelude::*;
 use std::cell::RefCell;
