@@ -26,28 +26,30 @@ thread_local!(
 	// TODO: Include None. The first thought would be for Option<!> if that compiles with a simple js_intern!(None). wasm-bindgen treats this as undefined rather than null, so then should we.
 );
 
-trait Cache {
-	fn cache(self) -> *mut JsValue;
+#[doc(hidden)]
+/// This is a private trait and not meant to be used.
+pub trait CacheJsIntern__ {
+	fn cache_js_intern__(self) -> *mut JsValue;
 }
 
-impl Cache for f64 {
-	fn cache(self) -> *mut JsValue {
+impl CacheJsIntern__ for f64 {
+	fn cache_js_intern__(self) -> *mut JsValue {
 		FLOAT_CACHE.with(|c| {
 			c.cache(self.into())
 		})
 	}
 }
 
-impl Cache for &'static str {
-	fn cache(self) -> *mut JsValue {
+impl CacheJsIntern__ for &'static str {
+	fn cache_js_intern__(self) -> *mut JsValue {
 		STRING_CACHE.with(|c| {
 			c.cache(self)
 		})
 	}
 }
 
-impl Cache for bool {
-	fn cache(self) -> *mut JsValue {
+impl CacheJsIntern__ for bool {
+	fn cache_js_intern__(self) -> *mut JsValue {
 		BOOL_CACHE.with(|c| {
 			c.cache(self)
 		})
@@ -56,9 +58,9 @@ impl Cache for bool {
 
 macro_rules! CacheForT64 {
 	($t:ty) => {
-		impl Cache for $t {
-			fn cache(self) -> *mut JsValue {
-				(self as f64).cache()
+		impl CacheJsIntern__ for $t {
+			fn cache_js_intern__(self) -> *mut JsValue {
+				(self as f64).cache_js_intern__()
 			}
 		}
 	};
@@ -157,9 +159,9 @@ macro_rules! js_intern {
 	($value:expr) => {
 		{
 			use wasm_bindgen::JsValue;
-			use $crate::Cache;
+			use $crate::CacheJsIntern__;
 			thread_local!(
-				static INTERN: *mut JsValue = $value.cache();
+				static INTERN: *mut JsValue = $value.cache_js_intern__();
 			);
 
 			// A word about the safety here. We are dereferencing a pointer
