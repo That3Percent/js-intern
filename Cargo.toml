@@ -1,6 +1,6 @@
 [package]
 name = "js-intern"
-version = "0.2.1"
+version = "0.3.0"
 authors = ["Zac Burns <that3percent@gmail.com>"]
 edition = "2018"
 description = "A macro for interning JavaScript primitives"
@@ -11,6 +11,8 @@ keywords = ["javascript", "intern", "wasm-bindgen"]
 categories = ["caching", "wasm", "web-programming"]
 license = "MIT"
 
+[badges]
+maintenance = { status = "actively-developed" }
 
 [dependencies]
 wasm-bindgen = "0.2.40"
