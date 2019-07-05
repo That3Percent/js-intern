@@ -55,6 +55,6 @@ mod tests {
 
 	#[wasm_bindgen_test]
 	fn deduplicates_bool() {
-		assert_eq!(js_intern!("a") as *const _, js_intern!("a") as *const _);
+		assert_eq!(js_intern!(true) as *const _, js_intern!(true) as *const _);
 	}
 }
