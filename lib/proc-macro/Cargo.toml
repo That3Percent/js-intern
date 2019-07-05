@@ -1,29 +1,29 @@
 [package]
-name = "js-intern"
+name = "js-intern-proc-macro"
 version = "0.3.0"
 authors = ["Zac Burns <that3percent@gmail.com>"]
 edition = "2018"
-description = "A macro for interning JavaScript primitives"
+description = "Internal implementation details for the js-intern crate"
 homepage = "https://github.com/That3Percent/js-intern"
 repository = "https://github.com/That3Percent/js-intern"
-readme = "README.md"
 keywords = ["javascript", "intern", "wasm-bindgen"]
 categories = ["caching", "wasm", "web-programming"]
 license = "MIT"
+
+[lib]
+proc-macro = true
 
 [badges]
 maintenance = { status = "actively-developed" }
 
 [dependencies]
-wasm-bindgen = "0.2.40"
+quote = "0.6"
+proc-macro2 = "0.4.27"
+
+[dependencies.syn]
+version = "0.15.29"
+features = ['full']
 
 [dependencies.js-intern-core]
 version = "=0.3.0"
-path = "lib/core"
-
-[dependencies.js-intern-proc-macro]
-version = "=0.3.0"
-path = "lib/proc-macro"
-
-[dev-dependencies]
-wasm-bindgen-test = "0.2.40"
+path = "../core"
