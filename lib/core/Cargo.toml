@@ -1,6 +1,6 @@
 [package]
 name = "js-intern-core"
-version = "0.3.0"
+version = "0.3.1"
 authors = ["Zac Burns <that3percent@gmail.com>"]
 edition = "2018"
 description = "Internal implementation details for the js-intern crate"
