@@ -29,7 +29,7 @@ pub fn try_js_intern(input: TokenStream) -> TokenStream {
 	let expr = parse_macro_input!(input as Expr);
 	if is_conservatively_const(&expr) {
 		quote!({
-			use js_intern_core::js_intern;
+			use js_intern::js_intern;
 			js_intern!(#expr)
 		}).into()
 	} else {
